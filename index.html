@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <!-- Fontawesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        crossorigin="anonymous" />
+
+    <!-- Linking the external CSS file -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("6G_M7MgctcJFBw_i6"); // Correct your EmailJS user ID
+        })();
+    </script>
+
+    <!-- External JS file -->
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <!-- Header section -->
+    <header>
+        <h1>Hello, My name is Mythri</h1>
+        <p>Welcome to my portfolio</p>
+        <img width="200px" height="200px" src="images/avatar-3814049_1280.png" alt="Profile Picture" />
+    </header>
+
+    <!-- About section -->
+    <section>
+        <h2>About Me</h2>
+        <p>Hello, I am Mythri, currently pursuing a Bachelor of Technology (B.Tech) degree with a specialization in AI & ML...</p>
+    </section>
+
+    <!-- Projects section -->
+    <section>
+        <h2>Projects</h2>
+        <article>
+            <h3>Project 1: Personal Portfolio website</h3>
+            <img src="images/mobile-devices-2017980_1280.png" alt="Project 1" width="300" />
+            <p>A Personal Portfolio website is more than just a digital resume...</p>
+        </article>
+        <article>
+            <h3>Project 2: E-Commerce website</h3>
+            <img src="images/shopping-5217035_1280.png" alt="Project 2" width="300" />
+            <p>An e-commerce website is essential for businesses to reach a broader audience...</p>
+        </article>
+        <article>
+            <h3>Project 3: Blogging Platform</h3>
+            <img src="images/web-design-2038872_1280.jpg" alt="Project 3" width="300" />
+            <p>A blogging platform is an online service or software...</p>
+        </article>
+    </section>
+
+    <!-- Skills section -->
+    <section>
+        <h2>Skills</h2>
+        <ul>
+            <li><i class="fas fa-code"></i> HTML</li>
+            <li><i class="fas fa-paint-brush"></i> CSS</li>
+            <li><i class="fas fa-js"></i> JavaScript</li>
+            <li><i class="fab fa-react"></i> React</li>
+            <li><i class="fab fa-node"></i> Node.js</li>
+            <li><i class="fab fa-python"></i> Python</li>
+        </ul>
+    </section>
+
+    <!-- Contact section -->
+    <section>
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me via email or through my social media channels...</p>
+        <ul>
+            <li><i class="fas fa-envelope"></i> Email: mythri442@gmail.com</li>
+            <li><i class="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/in/mythribollineni"
+                    target="_blank">linkedin.com/in/mythribollineni</a></li>
+        </ul>
+    </section>
+
+    <!-- Contact form -->
+    <section>
+        <h3>Contact Form</h3>
+        <form id="contactForm" onsubmit="sendMail(); return false;">
+            <label for="name">Name:</label><br />
+            <input type="text" id="name" required /><br />
+            <label for="email">Email:</label><br />
+            <input type="email" id="email" required /><br />
+            <label for="message">Message:</label><br />
+            <textarea id="message" rows="4" required></textarea><br />
+            <button type="submit">Submit</button>
+        </form>
+        <div id="formResponse"></div> <!-- Message display -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Mythri Bollineni</p>
+    </footer>
+
+    <!-- JavaScript to handle EmailJS -->
+    <script type="text/javascript">
+    function sendMail() {
+        let params = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+        };
+
+        emailjs.send("service_t5c180u", "contact_form", params)
+        .then(function(response) {
+            console.log("SUCCESS!", response.status, response.text);
+            document.getElementById("formResponse").innerHTML = "Email sent successfully!";
+        })
+        .catch(function(error) {
+            console.log("FAILED...", error);
+            document.getElementById("formResponse").innerHTML = "Failed to send email.";
+        });
+    }
+    </script>
+
+</body>
+</html>
